@@ -1,0 +1,21 @@
+.display {
+    display: flex;
+    height: 50vh
+}
+
+.menu-text {
+    height: 50vh;
+    width: 90vw;
+    border: 5px solid black
+}
+
+.p1-img, .p2-img {
+    height: 25vh
+}
+
+.p1-display, .p2-display {  
+    border: 5px solid black;
+    display: flex;
+    height: 25%
+
+}
