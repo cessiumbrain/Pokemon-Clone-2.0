@@ -2,7 +2,7 @@ const ash = {
     pokemon: [
         {
             name: 'pikachu',
-            currentHp: 10,
+            currentHp: 100,
             maxHp: 100,
             imgSrc: 'images/pikachu.png',
             active: true,
@@ -10,8 +10,21 @@ const ash = {
             moves: [
                 {
                     name: 'spark',
-                    power: 10
-
+                    power: 10,
+                    animation: 'vibrate',
+                    audio: '/audio/punch.wav'
+                },
+                {
+                    name: 'shock',
+                    power: 15,
+                    animation: 'heartbeat',
+                    audio: '/audio/shock.wav'
+                },
+                {
+                    name: 'punch',
+                    power: 5,
+                    animation: 'blink-1',
+                    audio: '/audio/punch.wav'
                 }
             ]
             
@@ -21,10 +34,42 @@ const ash = {
             currentHp: 100,
             maxHp: 100,
             imgSrc: 'images/haunter.png',
-            alive: false,
+            alive: true,
             moves: [
                 {
-                    name:'haunt'
+                    name:'haunt',
+                    power: 12,
+                    audio: '/audio/haunt.wav'
+                },
+                {
+                    name: 'shreik',
+                    power: 12
+                },
+                {
+                    name: 'slap',
+                    power: 10
+                }
+            ]
+        },
+        {
+            name: 'jigglypuff',
+            currentHp: 100,
+            maxHp: 100,
+            imgSrc: '/images/jigglypuff.png',
+            active: false,
+            alive: true,
+            moves: [
+                {
+                    name: 'sing',
+                    power: 10
+                },
+                {
+                    name: 'punch',
+                    power: 15
+                },
+                {
+                    name: 'slap',
+                    power: 5
                 }
             ]
         }

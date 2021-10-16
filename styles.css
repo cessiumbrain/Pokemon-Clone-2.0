@@ -1,21 +1,240 @@
-.display {
-    display: flex;
-    height: 50vh
-}
 
-.menu-text {
-    height: 50vh;
-    width: 90vw;
+html {
+    font-family: 'lores-12'
+}
+.controls {
+    width: 100%;
+    height: 45vh;
     border: 5px solid black
 }
+.display {
+    display: flex;
+    height: 55vh;
+    width: 100%;
+    background-color: red;
+}
+.menu-text {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
 
+.fight-btn, .pkmn-btn, .bag-btn, .run-btn {
+    width: 50%;
+    text-align: center;
+}
+
+
+/*P1 Display Box*/
 .p1-img, .p2-img {
-    height: 25vh
+    height: 30vh
+}
+
+.p1-lvl {
+    flex-basis: 100%;
+    text-align: right;
+    margin: 10px;
+}
+.p1-health-div {
+    flex-basis: 90%;
+    background-color: blue;
+    border: 1px solid black;
+    height: 20%;
+    display: flex;
+    margin: auto;
+}
+
+.p1-health-bar {
+    background-color: orange;
+    width: 100%;
+    display: flex;
+}
+
+.p1-hp-fill {
+    background: yellow;
+    width: 50%;
+}
+
+.hp-label {
+    color: yellow;
+    background-color: black;
+    height: 100%;
+    width: 10%;
+}
+
+.p1-img {
+    align-self: flex-end;
+    position: absolute;
+    margin-left: 50px;
+}
+
+.p1-name {
+    flex-basis: 100%;
+    margin: 0;
+    margin-right: 10px;
+    text-align: right;
+}
+.p1-health {
+    flex-basis: 100%;
+    margin: 0;
+}
+/*P2 Display*/
+.p2-img {
+    position: absolute;
+    right: 25px;
+}
+
+.p2-name {
+    flex-basis: 100%;
+    margin: 0;
+    text-align: right;
+}
+
+.p2-display {
+    align-self: flex-end;
 }
 
 .p1-display, .p2-display {  
     border: 5px solid black;
     display: flex;
-    height: 25%
+    height: 30%;
+    width: 50vw;
+    flex-wrap: wrap;
 
 }
+.p2-health-div {
+    flex-basis: 90%;
+    background-color: blue;
+    border: 1px solid black;
+    height: 20%;
+    display: flex;
+    margin: auto;
+}
+
+.p2-health-bar {
+    background-color: orange;
+    width: 100%;
+    display: flex;
+}
+
+.p2-hp-fill {
+    background: yellow;
+    width: 50%;
+}
+
+.p2-lvl {
+    flex-basis: 100%;
+    text-align: right;
+    margin: 10px;
+}
+
+.p2-slide-in {
+    animation: opp-entrance 4s 
+}
+
+.p1-slide-in {
+    animation: p1-entrance 4s
+}
+/*animation classes*/
+.heartbeat {
+    animation: heartbeat .5s 6;
+}
+.vibrate{
+    animation: vibrate-1 .5s 6
+}
+
+.blink-1 {
+    animation: blink-1 3s
+}
+/*animations keyframes*/
+@keyframes opp-entrance {
+    0% {
+        transform: translateX(-100vw)
+    }
+    100%{
+
+    }
+  }
+  @keyframes p1-entrance {
+    0% {
+        transform: translateX(100vw)
+    }
+}
+
+@keyframes vibrate-1 {
+    0% {
+      -webkit-transform: translate(0);
+              transform: translate(0);
+    }
+    20% {
+      -webkit-transform: translate(-2px, 2px);
+              transform: translate(-2px, 2px);
+    }
+    40% {
+      -webkit-transform: translate(-2px, -2px);
+              transform: translate(-2px, -2px);
+    }
+    60% {
+      -webkit-transform: translate(2px, 2px);
+              transform: translate(2px, 2px);
+    }
+    80% {
+      -webkit-transform: translate(2px, -2px);
+              transform: translate(2px, -2px);
+    }
+    100% {
+      -webkit-transform: translate(0);
+              transform: translate(0);
+    }
+  }
+
+  @keyframes heartbeat {
+    from {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+      -webkit-transform-origin: center center;
+              transform-origin: center center;
+      -webkit-animation-timing-function: ease-out;
+              animation-timing-function: ease-out;
+    }
+    10% {
+      -webkit-transform: scale(0.91);
+              transform: scale(0.91);
+      -webkit-animation-timing-function: ease-in;
+              animation-timing-function: ease-in;
+    }
+    17% {
+      -webkit-transform: scale(0.98);
+              transform: scale(0.98);
+      -webkit-animation-timing-function: ease-out;
+              animation-timing-function: ease-out;
+    }
+    33% {
+      -webkit-transform: scale(0.87);
+              transform: scale(0.87);
+      -webkit-animation-timing-function: ease-in;
+              animation-timing-function: ease-in;
+    }
+    45% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+      -webkit-animation-timing-function: ease-out;
+              animation-timing-function: ease-out;
+    }
+  }
+  
+  @keyframes blink-1 {
+    0%,
+    50%,
+    100% {
+      opacity: 1;
+    }
+    25%,
+    75% {
+      opacity: 0;
+    }
+  }
+  

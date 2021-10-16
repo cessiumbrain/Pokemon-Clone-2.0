@@ -1,6 +1,8 @@
 import {ash} from './ash.js'
 import { opponent } from './opponent.js'
 
+//add back button to showMoves() that runs mainMenu
+
 const allDead = () =>{
     $('.menu-text').text(`${ash.activePokemon().name} fainted`)
     setTimeout(()=>{
@@ -19,7 +21,20 @@ const showMoves = () =>{
     $('.menu-text').html(ash.activePokemon().moves.map(move=>{
         return `<p class="ash-move" id="${move.name}">${move.name}</p>`
     }))
+    $('.menu-text').append(`<span class="back-btn">back</span>`)
+    $('.back-btn').on('click', mainMenu)
     $('.ash-move').on('click', ashClickMove)    
+}
+
+function mainMenu(){
+    $('.menu-text').html(
+                `<span class="fight-btn">Fight</span>
+                <span class="pkmn-btn">Pkmn</span>
+                <span class="bag-btn">Bag</span>
+                <span class="run-btn">Run</span>`
+    )
+    $('.fight-btn').on('click', showMoves)
+    $('.pkmn-btn').on('click', showPokemon)
 }
 
 function ashClickMove(){
@@ -42,8 +57,13 @@ function ashClickMove(){
 let oppMove = {}
 
 const clickAfterAshMove = () =>{
-    
-    opponentMove()
+    //check opp dead status
+
+    if(opponent.activePokemon().currentHp<=0){
+        $('.menu-text').text(`${opponent.activePokemon().name} fainted`)
+        console.log('opp dead')
+    } else{
+            opponentMove()
     $('.menu-text')
         .off()
         .text(`charizard used ${oppMove.name}`)
@@ -66,6 +86,8 @@ const clickAfterAshMove = () =>{
             })
         
     }, 3000)  
+    }
+
 }
 
 const changePokemon = (nextPokemon) =>{
@@ -82,7 +104,9 @@ const changePokemon = (nextPokemon) =>{
             .on('click', ()=>{
                 $('.menu-text')
                     .html(`<span class="fight-btn">Fight</span>
-                     <span class="pkmn-btn">Pkmn</span>`)
+                    <span class="pkmn-btn">Pkmn</span>
+                    <span class="bag-btn">Bag</span>
+                    <span class="run-btn">Run</span>`)
                      .off()
 
                 $('.fight-btn').on('click', showMoves)
@@ -99,7 +123,6 @@ $('.menu-text').html(ash.pokemon.filter(pokemon=>{
     return `<p class="pokemon" id="${pokemon.name}">${pokemon.name}</p>`
 }))
 $('.pokemon').on('click', (e)=>{
-    console.log(e.currentTarget.id)
     const nextPkmn = ash.pokemon.find(pokemon=>{
         return pokemon.name === e.currentTarget.id
     })
@@ -130,6 +153,9 @@ const opponentMove = () => {
 }
 
 const executeP1Move= (moveObj) =>{
+    animate('.p2-img', moveObj.animation)
+    //play sound
+    playSound(moveObj.audio)
     opponent.activePokemon().currentHp -= moveObj.power;
     updateDisplay(2)
 
@@ -147,14 +173,40 @@ const updateImg = (playerNum) =>{
 }
 
 const updateDisplay = (playerNum) =>{
+    console.log('update display')
     if(playerNum === 1){
-        $('.p1-health').text(`${ash.activePokemon().currentHp}`)
+        console.log('p1')
+        $('.p1-img').animate({
+            width: '200px'
+        }, 2000)
+        const healthNum = ash.activePokemon().currentHp;
+
+        const healthPct = ash.activePokemon().currentHp / ash.activePokemon().maxHp * 100;
+        $('.p1-hp-fill').css('width', `${healthPct}%`)
         $('.p1-name').text(`${ash.activePokemon().name}`)
     } else if(playerNum === 2){
-        $('.p2-health').text(`${opponent.activePokemon().currentHp}`)
+
+        const healthNum = opponent.activePokemon().currentHp;
+        const healthPct = opponent.activePokemon().currentHp / ash.activePokemon().maxHp * 100;
+        $('.p2-hp-fill').css('width', `${healthPct}%`)
         $('.p2-name').text(`${opponent.activePokemon().name}`)
     }
     
+}
+
+const animate = (animationTarget, animation) =>{
+    $(animationTarget).addClass(animation)
+
+    setTimeout(()=>{
+        $(animationTarget).removeClass(animation)
+    }, 3000)
+}
+
+const playSound = (soundSrc) =>{
+    //set src of class move-sound to current moveObj Sound
+    $('.move-sound').attr('src', soundSrc)
+    document.getElementById('move-sound').play()
+
 }
 
 

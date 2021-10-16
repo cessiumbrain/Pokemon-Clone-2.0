@@ -13,6 +13,8 @@ updateDisplay(2)
 updateImg(1)
 updateImg(2)
 
-
-
+setTimeout(()=>{
+    $('.p1-img').removeClass('p1-slide-in');
+    $('.p2-img').removeClass('p2-slide-in')
+}, 3000)
 

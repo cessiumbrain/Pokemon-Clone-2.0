@@ -9,6 +9,14 @@ const opponent = {
             moves: [
                 {
                     name:'burn',
+                    power: 90
+                },
+                {
+                    name: 'punch',
+                    power: 15
+                },
+                {
+                    name: 'ember',
                     power: 10
                 }
             ]

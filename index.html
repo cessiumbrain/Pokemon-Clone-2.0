@@ -1,26 +1,43 @@
 <html>
     <head>
         <link href="styles.css" rel="stylesheet">
-
+        <link rel="stylesheet" href="https://use.typekit.net/rcu7xcx.css">
         </link>
     </head>
     <body>
+        <audio src="audio/music.mp3"></audio>
+        <audio src="" class="move-sound" id="move-sound"></audio>
         <div class="display">
             <div class="p1-display">
                 <p class="p1-name"></p>
-                <p class="p1-health"></p>
+                <p class="p1-lvl">77</p>
+                <div class="p1-health-div">
+                    <div class="hp-label">HP</div>
+                    <div class="p1-health-bar">
+                        <div class="p1-hp-fill"></div>
+                    </div>
+                </div>
             </div>
-            <img class="p1-img">
+            <img class="p1-img p1-slide-in">
+            <img class="p2-img p2-slide-in">
             <div class="p2-display">
                 <p class="p2-name"></p>
-                <p class="p2-health"></p>
+                <p class="p2-lvl">77</p>
+                <div class="p2-health-div">
+                    <div class="hp-label">HP</div>
+                    <div class="p2-health-bar">
+                        <div class="p2-hp-fill"></div>
+                    </div>
+                </div>
             </div>
-            <img class="p2-img">
+            
         </div>
         <div class="controls">
             <div class="menu-text">
                 <span class="fight-btn">Fight</span>
                 <span class="pkmn-btn">Pkmn</span>
+                <span class="bag-btn">Bag</span>
+                <span class="run-btn">Run</span>
             </div>
             
         </div>
